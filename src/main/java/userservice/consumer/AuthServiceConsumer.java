@@ -2,8 +2,10 @@ package userservice.consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 import userservice.repository.UserRepository;
 
+@Component
 public class AuthServiceConsumer {
     private UserRepository userRepository;
     @Autowired
