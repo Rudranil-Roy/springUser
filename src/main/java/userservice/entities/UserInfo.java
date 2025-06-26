@@ -4,45 +4,35 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.*;
-import lombok.extern.jackson.Jacksonized;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Jacksonized
+@Entity
+@Data
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserInfoDto {
-    Long id;
+public class UserInfo {
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    Long id;
+    @Id
     //@JsonProperty("user_Id")
-    //@NonNull
     private String userId;
     //@JsonProperty("first_name")
-    //@NonNull
     private String firstName;
     //@JsonProperty("last_name")
-    //@NonNull
     private String lastName;
     //@JsonProperty("email")
-    //@NonNull
     private String email;
     //@JsonProperty("phone_number")
-    //@NonNull
     private Long phoneNumber;
     //@JsonProperty("profile_pic")
     private String profilePic;
-
-    public UserInfo transformToUserInfo(){
-        return UserInfo.builder()
-                .userId(userId)
-                .firstName(firstName)
-                .lastName(lastName)
-                .email(email)
-                .phoneNumber(phoneNumber)
-                .profilePic(profilePic)
-                .build();
-    }
 }
